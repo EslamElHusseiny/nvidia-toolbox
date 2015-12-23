@@ -6,5 +6,8 @@
         "--profile",
         "{connection_file}"
     ],
-    "codemirror_mode": "scala"
+    "codemirror_mode": "scala",
+    "env" : {
+        "SPARK_OPTS": "--driver-java-options=-Dfile.encoding=UTF-8"
+    }
 }

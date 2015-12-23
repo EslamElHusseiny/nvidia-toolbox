@@ -1,1 +1,1 @@
-GPU=0 nvidia-docker run -it --net=host -v /home/dosht/docker:/docker --name jupyter-hub jupyter-hub
+GPU=0 nvidia-docker run -it --net=host -v /home/dosht/docker:/docker jupyter-hub
