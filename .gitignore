@@ -1,0 +1,6 @@
+.DS_Store
+._.DS_Store
+._Dockerfile
+jupyterhub.sqlite
+jupyterhub_cookie_secret
+
