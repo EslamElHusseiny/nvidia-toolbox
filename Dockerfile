@@ -170,6 +170,8 @@ RUN apt-get update &&  \
 RUN julia -e 'Pkg.add("IJulia")' && \
     julia -e 'Pkg.add("Gadfly")' && julia -e 'Pkg.add("RDatasets")'
 
+# nltk
+RUN conda install --yes nltk
 
 WORKDIR /docker
 
@@ -188,4 +190,5 @@ WORKDIR /docker
 ###################################################
 #CMD bash
 CMD jupyter notebook --port=8888 --ip=127.0.0.1
+#CMD jupyter notebook --port=80 --ip=0.0.0.0
 
