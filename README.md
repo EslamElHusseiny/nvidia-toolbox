@@ -1,6 +1,6 @@
 # Deeplearning Toolbox in a Docker Container with NVIDIA GPU
 
-This is one docker container that includes everything you need as a data scientest to build expierements quickly. This contains simple tools like R, numpy and sklearn, and descent deeplearning libraries that run on GPUs like Thenao, Keras, Tensorflow and Torck, and finally Apache Spark 6 and you can choose to run it on cluster not just local. So let's get started...
+This is one docker container that includes everything you need as a data scientest to build expierements quickly. This contains simple tools like R, numpy and sklearn, and descent deeplearning libraries that run on GPUs like Thenao, Keras, Tensorflow and Torck, and finally Apache Spark 1.5 and you can choose to run it on cluster not just local. So let's get started...
 
 ## Requirements
 1. A PC or a laptop with Nvidia GPU and linux
@@ -23,7 +23,7 @@ cd nvidia-toolbox
 
 To verify installation open [http://localhost:8888/](http://localhost:8888/).
 
-Now, click on new and see the available kernels. You will see Bash, Python2, Python3, R, Scala 2.10.4 (Spark 1.6) and iTorch.
+Now, click on new and see the available kernels. You will see Bash, Python2, Python3, R, Scala 2.10.4 (Spark 1.5.2) and iTorch.
 
 ## Jupyter for R
 R is a free software environment for statistical computing and graphics. It compiles and runs on a wide variety of UNIX platforms, Windows and MacOS.
