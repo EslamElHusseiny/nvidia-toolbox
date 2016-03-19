@@ -30,7 +30,7 @@ R is a free software environment for statistical computing and graphics. It comp
 
 We can use R in Jupyter via iR kernel: https://github.com/IRkernel/IRkernel
 
-![Jupyter R](https://scontent-lhr3-1.xx.fbcdn.net/hphotos-xft1/v/t35.0-12/12809854_1011915482187816_351941862_o.jpg?oh=e9d61b5f24a847c501774867d081026f&oe=56DCC605)
+![Jupyter R](images/R.png)
 
 ## Jupyter for numpy, sklearn and nltk:
 
@@ -42,7 +42,7 @@ To enable plotting in the notebook, you need to start you notebook at the first 
 ```python
 %pylab inline
 ```
-![Jupyter for sklearn](https://scontent-lhr3-1.xx.fbcdn.net/hphotos-xft1/v/t35.0-12/12823175_1011915495521148_830131324_o.jpg?oh=c9fe0764f50319796d0680294e878416&oe=56DE0A0B)
+![Jupyter for sklearn](images/sklearn)
 ## Jupyter for Theano, Tensorflow amd Keras
 
 Theano: is a Python library that allows you to define, optimize, and evaluate mathematical expressions involving multi-dimensional arrays efficiently.
@@ -51,20 +51,20 @@ TensorFlow: is an open source software library for numerical computation using d
 
 Keras: is a minimalist, highly modular neural networks library, written in Python and capable of running on top of either TensorFlow or Theano.
 
-![Jupyter Keras](https://scontent-lhr3-1.xx.fbcdn.net/hphotos-xfa1/v/t35.0-12/12810388_1011915485521149_1750620026_o.jpg?oh=0acce84df7757a75f66ae675c8354c41&oe=56DD9BCB)
+![Jupyter Keras](images/keras)
 ## Jupyter for Torch
 Torch is a scientific computing framework with wide support for machine learning algorithms that puts GPUs first. It is easy to use and efficient, thanks to an easy and fast scripting language, LuaJIT, and an underlying C/CUDA implementation.
 
 We can use it in Jupyter using iTorch kernel:https://github.com/facebook/iTorch
 
-![Jupyter iTorck](https://scontent-lhr3-1.xx.fbcdn.net/hphotos-xpt1/v/t35.0-12/12809816_1011915492187815_211112466_o.jpg?oh=52bcbc9b9f28ddf049bfa8140eb64522&oe=56DDCF63)
+![Jupyter iTorck](images/torch)
 ## Jupyter for Apache Spark
 
 
 
 We can use it in Jupyter via spark kernel: https://github.com/ibm-et/spark-kernel
 
-![Jupyter Spark](https://scontent-lhr3-1.xx.fbcdn.net/hphotos-xfl1/v/t35.0-12/12837244_1011915488854482_1273084670_o.jpg?oh=7aade9f5a6fd8c349eac8f801e11cea2&oe=56DDBE02)
+![Jupyter Spark](images/spark)
 ### Spark notebook magics
 You can add dependencies to your notebook like this:
 ```

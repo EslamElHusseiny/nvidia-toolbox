@@ -1,5 +1,5 @@
 {
-    "display_name": "Scala 2.10.4 (Spark 1.5.2)",
+    "display_name": "Scala 2.10.4 (Spark 1.6.0)",
     "language": "scala",
     "argv": [
         "/opt/spark-kernel/bin/spark-kernel",

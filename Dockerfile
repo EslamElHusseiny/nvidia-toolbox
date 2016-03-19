@@ -84,7 +84,7 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 ENV PATH $JAVA_HOME/bin:$PATH
 
 # Spark dependencies
-ENV APACHE_SPARK_VERSION 1.5.2
+ENV APACHE_SPARK_VERSION 1.6.0
 RUN apt-get update && \
     apt-get install -y --no-install-recommends libgfortran3 && \
     apt-get clean
@@ -93,33 +93,37 @@ RUN wget -qO - http://d3kbcqa49mib13.cloudfront.net/spark-${APACHE_SPARK_VERSION
     ln -s spark-${APACHE_SPARK_VERSION}-bin-hadoop2.6 spark
 
 # Scala Spark kernel (build and cleanup)
-RUN cd /tmp && \
-    echo deb http://dl.bintray.com/sbt/debian / > /etc/apt/sources.list.d/sbt.list && \
-    apt-get update && \
-    git clone https://github.com/dosht/spark-kernel.git && \
-    apt-get install -yq --force-yes --no-install-recommends sbt && \
-    cd spark-kernel && \
-    make dist;
+#RUN cd /tmp && \
+#    echo deb http://dl.bintray.com/sbt/debian / > /etc/apt/sources.list.d/sbt.list && \
+#    apt-get update && \
+#    git clone https://github.com/ibm-et/spark-kernel.git && \
+#    apt-get install -yq --force-yes --no-install-recommends sbt && \
+#    cd spark-kernel && \
+#    ls ;
+#    VERSION=0.1.5 IS_SNAPSHOT=true make dist;
+#
+#RUN cd /tmp/spark-kernel && \
+#    mv dist/spark-kernel /opt/spark-kernel && \
+#    chmod +x /opt/spark-kernel && \
+#    rm -rf ~/.ivy2 && \
+#    rm -rf ~/.sbt && \
+#    rm -rf /tmp/spark-kernel && \
+#    apt-get remove -y sbt && \
+#    apt-get clean
+#
+#
+## Add Scala kernel spec
+#RUN mkdir -p /opt/conda/share/jupyter/kernels/scala
+#COPY spark-kernel.json /opt/conda/share/jupyter/kernels/scala/kernel.json
 
-RUN cd /tmp/spark-kernel && \
-    mv dist/spark-kernel /opt/spark-kernel && \
-    chmod +x /opt/spark-kernel && \
-    rm -rf ~/.ivy2 && \
-    rm -rf ~/.sbt && \
-    rm -rf /tmp/spark-kernel && \
-    apt-get remove -y sbt && \
-    apt-get clean
+RUN pip install toree && \
+    jupyter toree install
 
-
-# Add Scala kernel spec
-RUN mkdir -p /opt/conda/share/jupyter/kernels/scala
-COPY spark-kernel.json /opt/conda/share/jupyter/kernels/scala/kernel.json
-
-# Now for a python2 environment
+## Now for a python2 environment
 RUN conda create -p $CONDA_DIR/envs/python2 python=2.7 ipykernel numpy pandas scikit-learn scikit-image matplotlib scipy seaborn sympy cython patsy statsmodels cloudpickle dill numba bokeh && conda clean -yt
 
 # Python packages
-RUN conda install --yes numpy pandas scikit-learn scikit-image matplotlib scipy seaborn sympy cython patsy statsmodels cloudpickle dill numba bokeh beautiful-soup theano && conda clean -yt
+RUN conda install --yes numpy pandas scikit-learn scikit-image matplotlib scipy nltk seaborn sympy cython patsy statsmodels cloudpickle dill numba bokeh beautiful-soup theano && conda clean -yt
 RUN pip install --no-cache-dir keras
 
 #################################################################
@@ -144,6 +148,21 @@ ENV SPARK_HOME /usr/local/spark
 ENV PYTHONPATH $SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.8.2.1-src.zip
 ENV THEANO_FLAGS='mode=FAST_RUN,device=gpu,nvcc.fastmath=True,cnmem=.75,floatX=float32'
 
+# R
+RUN conda config --add channels r && \
+    conda install --yes r-irkernel r-plyr r-devtools r-rcurl r-dplyr r-ggplot2 r-caret rpy2 r-tidyr r-shiny r-rmarkdown r-forecast r-stringr r-rsqlite r-reshape2 r-nycflights13 r-randomforest && conda clean -yt
+
+# Install Julia and iJulia
+RUN apt-get update &&  \
+    apt-get install -y julia libnettle4 && \
+    apt-get clean
+
+RUN julia -e 'Pkg.add("IJulia")' && \
+    julia -e 'Pkg.add("Gadfly")' && julia -e 'Pkg.add("RDatasets")'
+
+
+RUN apt-get update && apt-get install -y libzmq3-dev libssl-dev python-zmq
+
 # Install Torch 7
 RUN cd /opt && \
     wget https://raw.githubusercontent.com/torch/ezinstall/master/install-deps && \
@@ -157,21 +176,6 @@ RUN git clone https://github.com/facebook/iTorch.git /opt/iTorch && \
     cd /opt/iTorch && \
     . /opt/torch/install/bin/torch-activate && \
     sudo env "PATH=$PATH" luarocks make
-
-# R
-RUN conda config --add channels r && \
-    conda install --yes r-irkernel r-plyr r-devtools r-rcurl r-dplyr r-ggplot2 r-caret rpy2 r-tidyr r-shiny r-rmarkdown r-forecast r-stringr r-rsqlite r-reshape2 r-nycflights13 r-randomforest && conda clean -yt
-
-# Install Julia and iJulia
-RUN apt-get update &&  \
-    apt-get install -y julia libnettle4 && \
-    apt-get clean
-
-RUN julia -e 'Pkg.add("IJulia")' && \
-    julia -e 'Pkg.add("Gadfly")' && julia -e 'Pkg.add("RDatasets")'
-
-# nltk
-RUN conda install --yes nltk
 
 WORKDIR /docker
 
