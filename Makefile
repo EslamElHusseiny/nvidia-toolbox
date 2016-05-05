@@ -13,7 +13,7 @@ dev: build
 	$(DOCKER) run -it -v `pwd`:/src -v $(DATA):/data nvidia-toolbox bash
 
 notebook: build
-	$(DOCKER) run -it -v `pwd`:/src -v $(DATA):/data -p 8888:8888 nvidia-toolbox
+	$(DOCKER) run -it -v `pwd`:/src -v $(DATA):/data -P nvidia-toolbox
 
 test: build
 	$(DOCKER) run -it -v `pwd`:/src -v $(DATA):/data nvidia-toolbox nosetests -v sensorcnn

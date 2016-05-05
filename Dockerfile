@@ -37,13 +37,21 @@ RUN conda config --add channels r && \
     conda install --yes r-irkernel r-plyr r-devtools r-rcurl r-dplyr r-ggplot2 r-caret rpy2 r-tidyr r-shiny r-rmarkdown r-forecast r-stringr r-rsqlite r-reshape2 r-nycflights13 r-randomforest && conda clean -yt
 
 # Spark
+ENV JAVA_HOME="/usr/lib/jvm/java-8-oracle" \
+    APACHE_SPARK_VERSION="1.6.0" \
+    SPARK_HOME="/usr/local/spark"
+
 USER root
-RUN wget -qO - http://d3kbcqa49mib13.cloudfront.net/spark-${APACHE_SPARK_VERSION}-bin-hadoop2.6.tgz | tar -xz -C /usr/local/ && \
+RUN apt-get install -y wget && \
+    wget -qO - http://d3kbcqa49mib13.cloudfront.net/spark-${APACHE_SPARK_VERSION}-bin-hadoop2.6.tgz | tar -xz -C /usr/local/ && \
     cd /usr/local && \
+    apt-get purge -y wget && \
     ln -s spark-${APACHE_SPARK_VERSION}-bin-hadoop2.6 spark
-USER dosht
+
 RUN pip install toree && \
     jupyter toree install
+
+USER dosht
 #TODO: Add spark-kernel.json
 
 #TODO: Add Torch
