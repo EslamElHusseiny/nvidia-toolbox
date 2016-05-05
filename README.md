@@ -30,7 +30,7 @@ R is a free software environment for statistical computing and graphics. It comp
 
 We can use R in Jupyter via iR kernel: https://github.com/IRkernel/IRkernel
 
-![Jupyter R](images/R.png)
+![Jupyter R](https://raw.githubusercontent.com/dosht/nvidia-toolbox/master/images/R.png)
 
 ## Jupyter for numpy, sklearn and nltk:
 
@@ -42,7 +42,7 @@ To enable plotting in the notebook, you need to start you notebook at the first 
 ```python
 %pylab inline
 ```
-![Jupyter for sklearn](images/sklearn.png)
+![Jupyter for sklearn](https://raw.githubusercontent.com/dosht/nvidia-toolbox/master/images/sklearn.png)
 ## Jupyter for Theano, Tensorflow amd Keras
 
 Theano: is a Python library that allows you to define, optimize, and evaluate mathematical expressions involving multi-dimensional arrays efficiently.
@@ -51,20 +51,20 @@ TensorFlow: is an open source software library for numerical computation using d
 
 Keras: is a minimalist, highly modular neural networks library, written in Python and capable of running on top of either TensorFlow or Theano.
 
-![Jupyter Keras](images/keras.png)
+![Jupyter Keras](https://raw.githubusercontent.com/dosht/nvidia-toolbox/master/images/keras.png)
 ## Jupyter for Torch
 Torch is a scientific computing framework with wide support for machine learning algorithms that puts GPUs first. It is easy to use and efficient, thanks to an easy and fast scripting language, LuaJIT, and an underlying C/CUDA implementation.
 
 We can use it in Jupyter using iTorch kernel:https://github.com/facebook/iTorch
 
-![Jupyter iTorck](images/torch.png)
+![Jupyter iTorck](https://raw.githubusercontent.com/dosht/nvidia-toolbox/master/images/torch.png)
 ## Jupyter for Apache Spark
 
 
 
 We can use it in Jupyter via spark kernel: https://github.com/ibm-et/spark-kernel
 
-![Jupyter Spark](images/spark.png)
+![Jupyter Spark](https://raw.githubusercontent.com/dosht/nvidia-toolbox/master/images/spark.png)
 ### Spark notebook magics
 You can add dependencies to your notebook like this:
 ```
